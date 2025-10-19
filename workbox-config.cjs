@@ -6,4 +6,6 @@ module.exports = {
   clientsClaim: true,
   skipWaiting: true,
   maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
+  cleanupOutdatedCaches: true,
+  cacheId: "utility-app-v1",
 };
