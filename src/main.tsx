@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="light" storageKey="utility-app-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="toolifybox-ui-theme">
       <App />
       <Analytics />
     </ThemeProvider>
