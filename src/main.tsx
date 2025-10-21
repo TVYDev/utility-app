@@ -4,12 +4,14 @@ import "./index.css";
 import App from "./App.tsx";
 import { ThemeProvider } from "@/components/ThemeProvider.tsx";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider defaultTheme="light" storageKey="toolifybox-ui-theme">
       <App />
       <Analytics />
+      <SpeedInsights />
     </ThemeProvider>
   </StrictMode>
 );
