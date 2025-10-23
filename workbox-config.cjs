@@ -7,5 +7,5 @@ module.exports = {
   skipWaiting: true,
   maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
   cleanupOutdatedCaches: true,
-  cacheId: "toolifybox-v1.0.6",
+  cacheId: "toolifybox-v1.0.7",
 };
