@@ -142,7 +142,7 @@ const JsonFormatter = () => {
           spellCheck="false"
           autoComplete="off"
           autoCapitalize="off"
-          className="bg-muted flex-1 resize-none font-mono border-2 border-solid border-muted-foreground focus-visible:ring-0 focus:ring-0"
+          className="bg-muted flex-1 resize-none font-mono border-2 border-solid border-muted-foreground focus-visible:ring-0 focus:ring-0 break-all"
           value={json}
           onChange={(e) => {
             setJson(e.target.value);

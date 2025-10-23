@@ -151,7 +151,7 @@ const UrlDecoderEncoder = () => {
           spellCheck="false"
           autoComplete="off"
           autoCapitalize="off"
-          className="bg-muted flex-1 resize-none font-mono border-2 border-solid border-muted-foreground focus-visible:ring-0 focus:ring-0"
+          className="bg-muted flex-1 resize-none font-mono border-2 border-solid border-muted-foreground focus-visible:ring-0 focus:ring-0 overflow-auto break-all"
           value={url}
           onChange={(e) => {
             setUrl(e.target.value);
