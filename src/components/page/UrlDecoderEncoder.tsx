@@ -1,5 +1,6 @@
 import {
-  BracesIcon,
+  BinaryIcon,
+  BookUpIcon,
   BrushCleaningIcon,
   ClipboardCopyIcon,
   ClipboardPasteIcon,
@@ -13,8 +14,8 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ModeToggle } from "@/components/ModeToggle";
 
-const App = () => {
-  const [json, setJson] = useState("");
+const UrlDecoderEncoder = () => {
+  const [url, setUrl] = useState("");
 
   const [isCopied, setIsCopied] = useState(false);
   const [isPasted, setIsPasted] = useState(false);
@@ -33,76 +34,84 @@ const App = () => {
     isPasted ? 2000 : null
   );
 
-  const handleFormatJson = () => {
-    if (!json.trim()) {
-      alert("JSON is empty");
+  const handleEncodeUrl = () => {
+    if (!url.trim()) {
+      alert("URL is empty");
       return;
     }
 
-    try {
-      const parsed = JSON.parse(json);
-      const formatted = JSON.stringify(parsed, null, 2);
-      setJson(formatted);
-    } catch (e) {
-      alert(`Invalid JSON: ${(e as Error).message}`);
-    }
+    const encoded = encodeURIComponent(url);
+    setUrl(encoded);
   };
 
-  const handleRemoveWhitespaces = () => {
-    if (!json.trim()) {
-      alert("JSON is empty");
+  const handleDecodeUrl = () => {
+    if (!url.trim()) {
+      alert("URL is empty");
       return;
     }
 
-    try {
-      const parsed = JSON.parse(json);
-      const compact = JSON.stringify(parsed);
-      setJson(compact);
-    } catch (e) {
-      alert(`Invalid JSON: ${(e as Error).message}`);
+    const decoded = decodeURIComponent(url);
+    setUrl(decoded);
+  };
+
+  const handleTrimUrl = () => {
+    if (!url.trim()) {
+      alert("URL is empty");
+      return;
     }
+
+    const trimmed = url.trim();
+    setUrl(trimmed);
   };
 
   const handleClear = () => {
-    setJson("");
+    setUrl("");
   };
 
   const handleCopy = async () => {
-    if (!json.trim()) {
+    if (!url.trim()) {
       alert("JSON is empty");
       return;
     }
 
-    await navigator.clipboard.writeText(json);
+    await navigator.clipboard.writeText(url);
     setIsCopied(true);
   };
 
   const handlePaste = async () => {
     const text = await navigator.clipboard.readText();
-    setJson(text);
+    setUrl(text);
     setIsPasted(true);
   };
 
   return (
-    <main className="h-screen bg-border grid grid-rows-[min-content_calc(100vh-3.5rem)] p-2 gap-2">
+    <div className="h-screen bg-border grid grid-rows-[min-content_calc(100vh-3.5rem)] p-2 gap-2">
       <div className="flex justify-between h-8">
         <div className="flex gap-4">
           <div className="flex gap-2">
             <Button
               size="sm"
               className="active:scale-95 transition-transform cursor-pointer min-w-50"
-              onClick={handleFormatJson}
+              onClick={handleEncodeUrl}
             >
-              <BracesIcon />
-              &nbsp;Format JSON
+              <BinaryIcon />
+              &nbsp;Encode URL
             </Button>
             <Button
               size="sm"
               className="active:scale-95 transition-transform cursor-pointer min-w-50"
-              onClick={handleRemoveWhitespaces}
+              onClick={handleDecodeUrl}
+            >
+              <BookUpIcon />
+              &nbsp;Decode URL
+            </Button>
+            <Button
+              size="sm"
+              className="active:scale-95 transition-transform cursor-pointer min-w-50"
+              onClick={handleTrimUrl}
             >
               <BrushCleaningIcon />
-              &nbsp;Remove Whitespaces
+              &nbsp;Trim URL
             </Button>
           </div>
           <Separator orientation="vertical" className="bg-muted-foreground" />
@@ -143,14 +152,14 @@ const App = () => {
           autoComplete="off"
           autoCapitalize="off"
           className="bg-muted flex-1 resize-none font-mono border-2 border-solid border-muted-foreground focus-visible:ring-0 focus:ring-0"
-          value={json}
+          value={url}
           onChange={(e) => {
-            setJson(e.target.value);
+            setUrl(e.target.value);
           }}
         />
       </div>
-    </main>
+    </div>
   );
 };
 
-export default App;
+export default UrlDecoderEncoder;
