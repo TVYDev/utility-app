@@ -12,7 +12,7 @@ import { useTimeout } from "usehooks-ts";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ModeToggle } from "@/components/ModeToggle";
+import OfflineReady from "../app/OfflineReady";
 
 const UrlDecoderEncoder = () => {
   const [url, setUrl] = useState("");
@@ -85,7 +85,7 @@ const UrlDecoderEncoder = () => {
   };
 
   return (
-    <div className="h-screen bg-border grid grid-rows-[min-content_calc(100vh-3.5rem)] p-2 gap-2">
+    <div className="h-screen grid grid-rows-[min-content_calc(100vh-3.5rem)] p-2 pl-0 gap-2">
       <div className="flex justify-between h-8">
         <div className="flex gap-4">
           <div className="flex gap-2">
@@ -144,7 +144,7 @@ const UrlDecoderEncoder = () => {
             &nbsp;Clear
           </Button>
         </div>
-        <ModeToggle />
+        <OfflineReady className="self-center" />
       </div>
       <div className="flex-1 flex">
         <Textarea
